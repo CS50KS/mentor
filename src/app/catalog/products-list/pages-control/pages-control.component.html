@@ -1,0 +1,39 @@
+<div class="card" *ngIf="pages.length > 1">
+  <h3 class="card-header">Управление страницами</h3>
+  <nav class="card-body" aria-label="page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [ngClass]="{disabled: prevButtonDisabledStatus}">
+        <a 
+          class="page-link" 
+          tabindex="-1" 
+          href="portfolio/catalog/products/prev" 
+          [attr.aria-disabled]="prevButtonDisabledStatus"
+          (click)="onClick($event, 'prev')"
+        >Предыдущая</a>
+      </li>
+
+      <li 
+        class="page-item" 
+        [ngClass]="{active: page.active}" 
+        *ngFor="let page of pages; let i = index;"
+      >
+        <a 
+          class="page-link" 
+          [href]="'portfolio/catalog/products/' + (i + 1)" 
+          (click)="onClick($event, i)"
+        >
+          {{ i + 1 }}
+        </a>
+      </li>
+
+      <li class="page-item" [ngClass]="{disabled: nextButtonDisabledStatus}">
+        <a 
+          class="page-link" 
+          href="portfolio/catalog/products/next" 
+          [attr.aria-disabled]="nextButtonDisabledStatus"
+          (click)="onClick($event, 'next')"
+        >Следующая</a>
+      </li>
+    </ul>
+  </nav>
+</div>

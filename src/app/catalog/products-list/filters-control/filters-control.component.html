@@ -1,0 +1,56 @@
+<form class="card" #filtersControlForm = "ngForm" (change)="onChangeControls(filtersControlForm)">
+  <h3 class="card-header">Фильтр</h3>
+  <div class="card-body">
+    <p class="card-text">Всего товаров: <span>{{ total }}</span></p>
+    <p class="card-text">Выбрано: <span>{{ selected }}</span></p>
+    <button type="button" class="btn btn-secondary" (click)="clearFilters(filtersControlForm)">Сбросить фильтры</button>
+    <hr>
+  </div>
+  <div class="card-body">
+    <fieldset 
+      *ngFor="let item of options" 
+      [ngModelGroup]="item.option"
+    >
+      <legend>{{ item.localization }}</legend>
+      <div class="custom-control custom-switch"  *ngFor="let option of filters[item.option]; let i = index">
+        <input 
+          type="checkbox" 
+          class="custom-control-input" 
+          [id]="item.option + '-' + i" 
+          [name]="option"
+          [ngModel]="false"
+        >
+        <label class="custom-control-label" [for]="item.option + '-' + i">{{ option }}</label>
+      </div>
+    </fieldset>
+  </div>
+  <div class="card-footer">
+    <fieldset ngModelGroup="price">
+      <legend>Цена</legend>
+      <div class="form-inline">
+        <label for="">от  </label>
+        <input 
+          type="number"
+          [min]="prices[0]"
+          [max]="maxPrice.value"
+          step="100"
+          name="min"
+          #minPrice
+          [ngModel]="prices[0]"
+        >
+      </div>
+      <div class="form-inline">
+        <label for="">до  </label>
+        <input 
+          type="number"
+          [min]="minPrice.value"
+          [max]="prices[1]"
+          step="100"
+          name="max"
+          #maxPrice
+          [ngModel]="prices[1]"
+        >
+      </div>
+    </fieldset>
+  </div>
+</form>

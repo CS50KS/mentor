@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs"  *ngIf="productCategories.length != 0">
+  <li class="nav-item" *ngFor="let category of productCategories">
+    <a 
+      class="nav-link" 
+      [routerLink]="['/', 'portfolio', 'catalog', 'products', category.category]" 
+      routerLinkActive="active"
+    >{{ category.localization }}</a>
+  </li>
+</ul>
+
+<div *ngIf="productCategories.length == 0">Loading...</div>

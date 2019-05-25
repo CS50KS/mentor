@@ -1,0 +1,51 @@
+<main id="about-me" class="page-main">
+  <div class="hero" #hero>
+    <div class="hero__content container">
+      <div class="row">
+        <div class="col-md-4 col-lg-3 hero__aside">
+          <img class="img-fluid" src="../../assets/img/my-photo.jpg" alt="Vladimir Kotelenets Photo">
+        </div>
+        <div class="col-md-8 offset-lg-1 col-lg-8 hero__main">
+          <div>
+            <h1 class="">Владимир Котеленец</h1>
+            <p class=""><a href="https://www.youtube.com/watch?v=rKHpbhgpNvw&t=2s" target="_blank">ментор</a> проектов «<a href="https://brainbasket.org/ru/technology-nation-3/" target="_blank">Technology Nation</a>», «<a href="https://brainbasket.org/ru/it-moms-2/" target="_blank">IT Moms</a>» и «<a href="https://brainbasket.org/ru/wow-teachers-3/" target="_blank">WOW Teachers</a>» фонда <a href="https://brainbasket.org/ru/homepage/" target="_blank">BrainBasket</a></p>
+          </div>
+          <ul class="awesome-list">
+            <li class="awesome-list__item"><i class="fas fa-home"></i>г. Херсон, Украина</li>
+            <li class="awesome-list__item"><i class="fas fa-phone-square"></i><a href="tel:+380509587226">+38 (050) 958 72 26</a></li>
+            <li class="awesome-list__item"><i class="fab fa-skype"></i><a href="skype:meister.ks?call">meister.ks</a></li>
+            <li class="awesome-list__item"><i class="fas fa-envelope"></i><a href="mailto:mentor.cs50@gmail.com">mentor.cs50@gmail.com</a></li>
+            <li class="awesome-list__item"><i class="fab fa-github-square"></i><a href="https://cs50ks.github.io">https://cs50ks.github.io</a></li>
+          </ul>
+          <div>
+            <button class="btn btn-primary" type="button" (click)="showMoreInfo(hero)">{{ buttonTitle }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero" *ngIf="isShow">
+    <div class="hero__content container">
+      <div class="row">
+        <div class="col">
+          <h2 class="title title--awesome"><i class="fas fa-cogs"></i>Навыки</h2>
+          <ul class="awesome-list">
+            <li class="awesome-list__item"><i class="fab fa-html5"></i>HTML5</li>
+            <li class="awesome-list__item"><i class="fab fa-css3-alt"></i>CSS3 / Bootstrap / SASS / SCSS</li>
+            <li class="awesome-list__item"><i class="fab fa-js"></i>JavaScript / jQuery / ECMA Script 6 / TypeScript / Angular</li>
+            <li class="awesome-list__item"><i class="fas fa-microchip"></i>C / C++</li>
+            <li class="awesome-list__item"><i class="fab fa-github"></i>Git</li>
+            <li class="awesome-list__item"><i class="fab fa-drupal"></i>Drupal / Joomla</li>
+            <li class="awesome-list__item"><i class="fab fa-adobe"></i>Photoshop / Illustrator / InDesign / CorelDraw</li>
+          </ul>
+        </div>
+      </div>
+      <p>&nbsp;</p>
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" type="button" (click)="showMoreInfo(hero)">{{ buttonTitle }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

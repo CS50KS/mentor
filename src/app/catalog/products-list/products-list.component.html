@@ -1,0 +1,67 @@
+<main class="page-main pl">
+  <!-- PRODUCT CATEGORIES CONTROL -->
+  <div class="pl-header">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <app-product-categories></app-product-categories>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /PRODUCT CATEGORIES CONTROL -->
+    <div class="pl-main" *ngIf="!isReady">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <p>Loading...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pl-main" *ngIf="isReady">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-4">
+            <!-- FILTERS CONTROL -->
+            <app-filters-control 
+            [options]="filteringOptions" 
+            [filters]="filtersForProduct" 
+            [prices]="priceRange" 
+            [total]="productsSize"
+            [selected]="productsListSize"
+            (onChangeFilters)="applyFilters($event)"></app-filters-control>
+            <!-- /FILTERS CONTROL -->
+          </div>
+          <div class="col-lg-9 col-md-8">
+            <!-- VIEWS CONTROL -->
+            <app-views-control (onChangeViews)="applyViewsSettings($event)"></app-views-control>
+            <!-- /VIEWS CONTROL -->
+            <!-- PRODUCTS VIEWBOX -->
+            <app-products-viewbox [category]="productsCategory" [products]="productsListForViewbox" [view]="view"></app-products-viewbox>
+            <!-- /PRODUCTS VIEWBOX -->
+            <!-- PAGES CONTROL -->
+            <app-pages-control [pages]="arrayOfPages" (onPageSelected)="changeActivePage($event)"></app-pages-control>
+            <!-- /PAGES CONTROL -->
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- STATUS BAR -->
+  <div class="pl-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <app-status-bar 
+            [category]="productsCategory" 
+            [total]="productsSize"
+            [selected]="productsListSize"
+            [prices]="priceRange" 
+            [filters]="filtersForProduct"
+          ></app-status-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /STATUS BAR -->
+</main>

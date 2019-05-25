@@ -1,0 +1,66 @@
+<div class="card">
+  <h3 class="card-header">Управление видом</h3>
+  <div class="card-body">
+    <form #viewsControlForm="ngForm" (change)="sendViewsSettings(viewsControlForm)">
+      <div class="row">
+        <!-- SORTING -->
+        <div class="col">
+          <div class="form-group row">
+            <label for="sorting-control" class="col-auto col-form-label">Сортировать: </label>
+            <select 
+              id="sorting-control" 
+              class="form-control col"
+              name="sorting" 
+              [ngModel]="sortingControls[0]['value']" 
+            >
+              <option 
+                *ngFor="let control of sortingControls"
+                [value]="control['value']"
+              >
+                {{ control['option'] }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- CAPACITY -->
+        <div class="col">
+          <div class="form-group row">
+            <label for="page-control" class="col-auto col-form-label">Выводить на странице: </label>
+            <select 
+              id="page-control" 
+              class="form-control col"
+              name="capacity" 
+              [ngModel]="paginationControls[0]['value']"
+            >
+              <option 
+                *ngFor="let control of paginationControls"
+                [value]="control['value']"
+              >
+                {{ control['option'] }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- VIEW -->
+        <div class="col-auto pl-view-options">
+          <div class="form-check form-check-inline" *ngFor="let control of viewControls; let i = index;">
+            <input 
+              class="form-check-input" 
+              type="radio" 
+              [id]="'viewControl-' + (i + 1)" 
+              name="view" 
+              [ngModel]="viewControls[0]['value']"
+              [value]="control['value']" 
+            >
+            <label 
+              class="form-check-label" 
+              [for]="'viewControl-' + (i + 1)"
+            >
+              <span class="sr-only">{{ control['value'] }}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
